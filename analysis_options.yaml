@@ -1,0 +1,65 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gen.dart"
+    - "**/generated/**"
+    - "build/**"
+  errors:
+    missing_required_param: error
+    missing_return: error
+    dead_code: warning
+    invalid_null_aware_operator: error
+    unnecessary_null_checks: warning
+    unused_import: warning
+    unused_local_variable: warning
+    depend_on_referenced_packages: warning
+    deprecated_member_use: warning
+  plugins:
+    - custom_lint
+
+linter:
+  rules:
+    # Style & readability
+    always_declare_return_types: true
+    prefer_final_locals: true
+    prefer_final_in_for_each: true
+    prefer_final_fields: true
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+
+    # Async/Flutter pitfalls
+    unawaited_futures: true
+    avoid_print: true
+    cancel_subscriptions: true
+    close_sinks: true
+    use_build_context_synchronously: true
+
+    # Consistency
+    use_key_in_widget_constructors: true
+    sort_pub_dependencies: true
+    directives_ordering: true
+    depend_on_referenced_packages: true
+    require_trailing_commas: true
+    use_super_parameters: true
+    prefer_single_quotes: true
+
+    # Clean code
+    avoid_redundant_argument_values: true
+    unnecessary_lambdas: true
+    unnecessary_await_in_return: true
+    avoid_returning_null_for_future: true
+    avoid_types_on_closure_parameters: true
+    avoid_void_async: true
+    no_leading_underscores_for_local_identifiers: true
+
+custom_lint:
+  rules:
+    - riverpod_missing_provider_scope
+    - riverpod_avoid_manual_providers_as_parameters
+    - riverpod_qualifier_mismatch
+    - riverpod_prefer_final_providers
+    - riverpod_prefer_AsyncValue
+    - riverpod_prefer_keep_alive_false_when_possible
