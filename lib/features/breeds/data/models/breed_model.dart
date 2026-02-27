@@ -15,6 +15,8 @@ abstract class BreedModel with _$BreedModel {
     required String temperament,
     @JsonKey(name: 'life_span') required String lifeSpan,
     @JsonKey(name: 'reference_image_id') String? referenceImageId,
+    required int intelligence,
+    required int adaptability,
     required WeightModel weight,
   }) = _BreedModel;
 
@@ -42,6 +44,8 @@ extension BreedModelX on BreedModel {
     temperament: temperament,
     lifeSpan: lifeSpan,
     imageId: referenceImageId ?? '',
+    intelligence: intelligence,
+    adaptability: adaptability,
     weight: weight.toEntity(),
   );
 }

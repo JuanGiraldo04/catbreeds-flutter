@@ -12,6 +12,8 @@ abstract class Breed with _$Breed {
     required String temperament,
     required String lifeSpan,
     required String imageId,
+    required int intelligence,
+    required int adaptability,
     required Weight weight,
   }) = _Breed;
 }

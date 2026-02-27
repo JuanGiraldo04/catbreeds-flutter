@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/api_constants.dart';
 import '../network/logging_interceptor.dart';
 
-/// Provides a configured Dio instance.
-/// This is a global dependency shared across the app.
-final dioProvider = Provider<Dio>((ref) {
+part 'network_providers.g.dart';
+
+@riverpod
+Dio dio(Ref ref) {
   final dio = Dio(
     BaseOptions(
       baseUrl: ApiConstants.baseUrl,
@@ -24,4 +26,4 @@ final dioProvider = Provider<Dio>((ref) {
   dio.interceptors.add(const LoggingInterceptor());
 
   return dio;
-});
+}
