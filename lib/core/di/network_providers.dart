@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constants/api_constants.dart';
+import '../constants/env.dart';
 import '../network/logging_interceptor.dart';
 
 part 'network_providers.g.dart';
@@ -18,7 +19,7 @@ Dio dio(Ref ref) {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'x-api-key': ApiConstants.apiKey,
+        'x-api-key': Env.apiKey,
       },
     ),
   );

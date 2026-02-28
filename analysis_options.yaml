@@ -17,6 +17,7 @@ analyzer:
     unused_local_variable: warning
     depend_on_referenced_packages: warning
     deprecated_member_use: warning
+    invalid_annotation_target: ignore
   plugins:
     - custom_lint
 
