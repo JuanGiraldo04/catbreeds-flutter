@@ -24,7 +24,7 @@ class BreedDetailPage extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: ApiConstants.imageUrl(breed.imageId),
               width: double.infinity,
-              height: size.height * 0.4,
+              height: size.height * 0.45,
               fit: BoxFit.cover,
               placeholder: (_, _) => SizedBox(
                 height: size.height * 0.4,

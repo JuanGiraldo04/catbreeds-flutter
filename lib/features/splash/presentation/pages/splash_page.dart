@@ -32,22 +32,24 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       backgroundColor: theme.colorScheme.surface,
       body: SafeArea(
-        child: Column(
-          children: [
-            const Spacer(flex: 2),
-            Text(
-              appName,
-              style: theme.textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+        child: Center(
+          child: Column(
+            children: [
+              const Spacer(flex: 2),
+              Text(
+                appName,
+                style: theme.textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const Spacer(flex: 3),
-            Image.asset(
-              Assets.catLogo,
-              height: size.height * 0.35,
-              fit: BoxFit.contain,
-            ),
-          ],
+              const Spacer(flex: 3),
+              Image.asset(
+                Assets.catLogo,
+                height: size.height * 0.30,
+                fit: BoxFit.contain,
+              ),
+            ],
+          ),
         ),
       ),
     );
