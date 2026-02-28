@@ -9,4 +9,6 @@ class AppStrings {
   static const years = 'years';
   static const weight = 'Weight';
   static const adaptability = 'Adaptability';
+  static const errorMessage = 'Something went wrong';
+  static const retry = 'Retry';
 }

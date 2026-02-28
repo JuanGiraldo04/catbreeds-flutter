@@ -40,7 +40,10 @@ class BreedsPage extends ConsumerWidget {
           Expanded(
             child: state.when(
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (e, _) => Center(child: Text(e.toString())),
+              error: (e, _) => _ErrorView(
+                message: e.toString(),
+                onRetry: () => ref.invalidate(breedsNotifierProvider),
+              ),
               data: (breeds) => breeds.isEmpty
                   ? const Center(child: Text(AppStrings.noBreedsFound))
                   : ListView.builder(
@@ -51,6 +54,50 @@ class BreedsPage extends ConsumerWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _ErrorView extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+
+  const _ErrorView({required this.message, required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.error_outline, size: 48, color: theme.colorScheme.error),
+            const SizedBox(height: 16),
+            Text(
+              AppStrings.errorMessage,
+              style: theme.textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              message,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 24),
+            FilledButton.icon(
+              onPressed: onRetry,
+              icon: const Icon(Icons.refresh),
+              label: const Text(AppStrings.retry),
+            ),
+          ],
+        ),
       ),
     );
   }
